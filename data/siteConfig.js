@@ -1,90 +1,108 @@
 module.exports = {
-  siteTitle: 'Francisco Santos',
-  siteDescription: `Create your online curriculum in just a few minutes with this starter`,
-  authorName: 'Francisco Santos',
-  twitterUsername: '_franciscodf',
-  githubUsername: 'santosfrancisco',
+  siteTitle: 'Hector R. Salazar',
+  siteDescription: `Personal portfolio`,
+  authorName: 'Hector R Salazar',
+  twitterUsername: '_austrachilango',
+  githubUsername: 'hrsalazar',
   authorAvatar: '/images/avatar.jpeg',
-  authorDescription: `Developer, passionate about what I do. Always interested in how the sites were made, I started to study HTML by hobby. <br />
-    In 2012 I started working as a support technician and I approached the developers.
-    In 2015, I started to study C # and started to contribute with the team giving maintenance in an application in C # and .NET. <br />
-    I currently work as a frontend developer and mainly work with <strong>Javascript, NodeJS e React.</strong>`,
+  authorDescription: `
+  •	Software developer with over 7+ years of experience in Software Development including Requirements Gathering, Design, Development, Unit Testing, Implementation, Application Support/Maintenance and Documentation with ability to interact with individuals at all levels
+  
+  •	Strong experience developing applications under web platform
+  
+  •	Knowledge in Service Oriented Architecture and Web Services
+  
+  •	Strong understanding of enterprise and technical level of Content Management Systems (CMS), WCM and Web Portal platforms
+  
+  • Passion for technology specially <strong>Javascript</strong>, NodeJs and all the different frameworks and methodologies that keep coming
+  
+  • Blockchain enthusiast that truly believes on this revolutionary technology.`,
   skills: [
     {
-      name: 'HTML',
-      level: 70
+      name: 'HTML'
     },
     {
-      name: 'CSS',
-      level: 60
+      name: 'CSS'
     },
     {
-      name: 'Javascript',
-      level: 50
+      name: 'Javascript'
     },
     {
-      name: 'NodeJs',
-      level: 40
+      name: 'NodeJs'
     },
     {
-      name: 'React',
-      level: 60
+      name: 'Java'
     },
     {
-      name: 'Git',
-      level: 70
+      name: 'Git'
+    },
+    {
+      name: 'Angular'
+    },
+    {
+      name: 'Mobile Development'
     }
   ],
   jobs: [
     {
-      company: "Lendico",
+      company: "Personal Demo",
       begin: {
         month: 'apr',
         year: '2018'
       },
       duration: null,
-      occupation: "Frontend developer",
-      description: "I integrate the Frontend team responsible for developing and maintaining the online lending platform."
+      occupation: "Software developer",
+      description: "Personal project using the MERN stack"
   
     }, {
-      company: "Anapro",
+      company: "Metcash",
       begin: {
-        month: 'dec',
+        month: 'may',
         year: '2016'
       },
-      duration: '1 yr e 5 mos',
+      duration: '5 months',
       occupation: "Fullstack developer",
-      description: "Development and maintenance, corrective and preventive, of web applications for the real estate market."
+      description: "Develop and integrate backend web services with UI using specific frameworks and libraries"
     }, {
-      company: "Anapro",
+      company: "AMP",
       begin: {
-        month: 'set',
-        year: '2012'
+        month: 'jun',
+        year: '2015'
       },
-      duration: '4 yrs e 3 mos',
-      occupation: "Support Technician",
-      description: "Responsible for the implementation and parameterization of the system, training and customer support. Acting also in person in real estate launches guaranteeing the success and good use of the tool."
+      duration: '6 months',
+      occupation: "Software Developer",
+      description: "Rebuild NPS tactical solution and collaboration on back end development for PEPE"
   
-    },
+    }, {
+      company: "Qantas Loyalty",
+      begin: {
+        month: 'May',
+        year: '2014'
+      },
+      duration: '1 yr',
+      occupation: "Frontend Developer",
+      description: "Integration and implementation of a portal instance using Liferay 6.2 platform. Creation of templates and layouts complying with web design approved by business unit. Development of customised functionality based on jQuery 1.11 and AlloyUI 2.0"
+  
+    }
     /* ... */
   ],
   social: {
-    twitter: "https://twitter.com/_franciscodf",
-    linkedin: "https://www.linkedin.com/in/santos-francisco",
-    github: "https://github.com/santosfrancisco",
-    email: "yoshi.df@gmail.com"
+    twitter: "https://twitter.com/austrachilango",
+    linkedin: "https://www.linkedin.com/in/hrsalazar",
+    github: "https://github.com/hrsalazar",
+    email: "hector.sa@gmail.com"
   },
   siteUrl: 'https://santosfrancisco.github.io/gatsbystarter-cv',
   pathPrefix: '/gatsby-starter-cv', // Note: it must *not* have a trailing slash.
   siteCover: '/images/cover.jpeg',
-  googleAnalyticsId: 'UA-131359385-1',
+  googleAnalyticsId: 'UA-54524095-1',
   background_color: '#ffffff',
   theme_color: '#25303B',
   display: 'minimal-ui',
   icon: 'src/assets/gatsby-icon.png',
   headerLinks: [
     {
-      label: 'Francisco Santos',
+      label: 'Hector Salazar',
       url: '/',
     }
   ]
