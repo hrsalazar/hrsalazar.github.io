@@ -40,19 +40,19 @@ module.exports = {
       name: 'Angular'
     },
     {
-      name: 'Mobile Development'
+      name: 'Portal'
     }
   ],
   jobs: [
     {
-      company: "Personal Demo",
+      company: "TAFE NSW",
       begin: {
-        month: 'apr',
-        year: '2018'
+        month: 'Mar',
+        year: '2019'
       },
       duration: null,
-      occupation: "Software developer",
-      description: "Personal project using the MERN stack"
+      occupation: "Front-end Developer / UX",
+      description: "Development and improvement of UI around TAFE Digital projects"
   
     }, {
       company: "Metcash",
@@ -92,7 +92,7 @@ module.exports = {
     github: "https://github.com/hrsalazar",
     email: "hector.sa@gmail.com"
   },
-  siteUrl: 'https://santosfrancisco.github.io/gatsbystarter-cv',
+  siteUrl: 'https://hrsalazar.github.io',
   pathPrefix: '/gatsby-starter-cv', // Note: it must *not* have a trailing slash.
   siteCover: '/images/cover.jpeg',
   googleAnalyticsId: 'UA-54524095-1',
