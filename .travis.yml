@@ -1,9 +1,35 @@
-sudo: required
+# sudo: required
+# language: node_js
+
+# node_js: node
+
+# dist: trusty
+
+# script:
+#   - yarn install
+
 language: node_js
-
-node_js: node
-
-dist: trusty
-
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email:
+    recipients:
+      - hector.sa@gmail.com
+    on_success: always
+    on_failure: always
+node_js:
+  - '9'
+git:
+  depth: 3
 script:
-  - yarn install
+  - yarn build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  github-token: $GITHUB_TOKEN
+  local-dir: public
+  target-branch: master
+  on:
+    branch: develop
