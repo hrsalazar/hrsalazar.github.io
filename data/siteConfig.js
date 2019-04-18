@@ -37,10 +37,10 @@ module.exports = {
       name: 'Git'
     },
     {
-      name: 'Angular'
+      name: 'Vue'
     },
     {
-      name: 'Portal'
+      name: 'Bootstrap'
     }
   ],
   jobs: [
