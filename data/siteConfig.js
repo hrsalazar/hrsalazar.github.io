@@ -7,15 +7,15 @@ module.exports = {
   authorAvatar: '/images/avatar.jpeg',
   authorDescription: `
   •	Software developer with over 7+ years of experience in Software Development including Requirements Gathering, Design, Development, Unit Testing, Implementation, Application Support/Maintenance and Documentation with ability to interact with individuals at all levels
-  
+  <br>
   •	Strong experience developing applications under web platform
-  
+  <br>
   •	Knowledge in Service Oriented Architecture and Web Services
-  
+  <br>
   •	Strong understanding of enterprise and technical level of Content Management Systems (CMS), WCM and Web Portal platforms
-  
+  <br>
   • Passion for technology specially <strong>Javascript</strong>, NodeJs and all the different frameworks and methodologies that keep coming
-  
+  <br>
   • Blockchain enthusiast that truly believes on this revolutionary technology.`,
   skills: [
     {
