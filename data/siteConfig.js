@@ -41,9 +41,29 @@ module.exports = {
     },
     {
       name: 'Bootstrap'
+    },
+    {
+      name: 'React'
+    },
+    {
+      name: 'Solidity'
+    },
+    {
+      name: 'Blockchain Development'
     }
   ],
   jobs: [
+    {
+      company: "Consensys",
+      begin: {
+        month: 'Sep',
+        year: '2021'
+      },
+      duration: null,
+      occupation: "Blockchain Development Bootcamp 2021",
+      description: "Become a blockchain developer and make the world a better place"
+  
+    },
     {
       company: "TAFE NSW",
       begin: {
