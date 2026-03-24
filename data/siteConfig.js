@@ -201,7 +201,7 @@ module.exports = {
     email: "hector.sa@gmail.com"
   },
   siteUrl: 'https://hrsalazar.github.io',
-  pathPrefix: '/gatsby-starter-cv', // Note: it must *not* have a trailing slash.
+  pathPrefix: '', // Note: it must *not* have a trailing slash.
   siteCover: '/images/cover.jpeg',
   googleAnalyticsId: 'UA-54524095-1',
   background_color: '#ffffff',
