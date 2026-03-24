@@ -83,7 +83,7 @@ class Hero extends React.Component {
         <TitleContainer>
           <HeroTitle>{title}</HeroTitle>
           <HeroSubtitle>
-            Development & Integration Lead | Solution Architect | AI-Assisted Development Explorer | Gitub Repos Collector
+            Development & Integration Lead | Solution Architect | AI-Assisted Development Explorer | Github Repos Collector
           </HeroSubtitle>
         </TitleContainer>
       </HeroContainer>
