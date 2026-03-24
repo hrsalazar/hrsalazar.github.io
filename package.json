@@ -33,7 +33,7 @@
     "build": "NODE_OPTIONS=--openssl-legacy-provider gatsby build",
     "develop": "NODE_OPTIONS=--openssl-legacy-provider gatsby develop",
     "start": "npm run develop",
-    "deploy": "gatsby build && gh-pages -d public -b gh-pages",
+    "deploy": "npm run build && gh-pages -d public -b gh-pages",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
