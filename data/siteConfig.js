@@ -6,19 +6,15 @@ module.exports = {
   githubUsername: 'hrsalazar',
   authorAvatar: '/images/avatar.jpeg',
   authorDescription: `
-  •	Software developer with over 7+ years of experience in Software Development including Requirements Gathering, Design, Development, Unit Testing, Implementation, Application Support/Maintenance and Documentation with ability to interact with individuals at all levels
+  • Software delivery leader with 10+ years building modern enterprise and web applications, from requirements and architecture to implementation, testing, and production support
   <br>
-  •	Strong experience developing applications under web platform
+  • Proven experience in full-stack development (Java/Spring, Node.js, React, Vue) plus API design (REST, OpenAPI), integration architecture, and production-grade CI/CD/DevOps
   <br>
-  • Currently catching up with Web 3.0 ecosystem
+  • Currently leading ERP integration and manufacturing data platform modernization, with strong governance in quality, reliability, and security
   <br>
-  •	Strong understanding of enterprise and technical level of Content Management Systems (CMS), WCM and Web Portal platforms
+  • Passionate about AI-assisted and autonomous engineering workflows, reusable architecture patterns, and effective cross-functional collaboration
   <br>
-  • Passion for technology specially <strong>Javascript</strong>, NodeJs and all the different frameworks and methodologies that keep coming
-  <br>
-  • Blockchain enthusiast that truly believes on this revolutionary technology
-  <br>
-  • Growing understanding on various topics related to blockchain technology such as smart contract development, integration with wallets and UI, testing on testnets L1 and L2, use of Web 3.0 infrastructure.
+  • Blockchain/Web3 practitioner focused on smart contract development, wallet integration, multi-layer testnets (L1/L2), and composable dApp infrastructure
   `,
   skills: [
     {

@@ -83,9 +83,8 @@ class Hero extends React.Component {
         <TitleContainer>
           <HeroTitle>{title}</HeroTitle>
           <HeroSubtitle>
-            Development & Integration Lead | Solution Architect | AI-Assisted Development Expert
+            Development & Integration Lead | Solution Architect | AI-Assisted Development Explorer | Gitub Repos Collector
           </HeroSubtitle>
-          <CTAButton href="#about">Explore My Work</CTAButton>
         </TitleContainer>
       </HeroContainer>
     )

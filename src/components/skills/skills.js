@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import SkillBar from './skill-bar'
 import styled from 'styled-components'
 
