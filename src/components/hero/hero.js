@@ -11,6 +11,9 @@ const HeroContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  min-height: 80vh;
+  will-change: transform;
+
   &::before {
     content: '';
     position: absolute;
@@ -18,8 +21,29 @@ const HeroContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(37, 48, 59, 0.8) 0%, rgba(37, 48, 59, 0.6) 50%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(135deg, rgba(37, 48, 59, 0.75) 0%, rgba(37, 48, 59, 0.56) 45%, rgba(0, 0, 0, 0.35) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -20%;
+    bottom: -35%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at 70% 70%, rgba(118, 75, 162, 0.32), transparent 60%);
+    transform: rotate(-10deg);
     z-index: 1;
+    pointer-events: none;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
   }
 `
 
@@ -65,11 +89,12 @@ const CTAButton = styled.a`
   font-size: 1.1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border: 2px solid transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   }
 `
@@ -85,6 +110,7 @@ class Hero extends React.Component {
           <HeroSubtitle>
             Development & Integration Lead | Solution Architect | AI-Assisted Development Explorer | Github Repos Collector
           </HeroSubtitle>
+          <CTAButton href="#about" aria-label="Scroll to About section">Explore My Work</CTAButton>
         </TitleContainer>
       </HeroContainer>
     )

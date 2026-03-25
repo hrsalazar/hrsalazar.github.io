@@ -43,10 +43,35 @@ const AboutText = styled.div`
 `
 
 export default ({ title = 'About', text = '' }) => {
+  const [showMore, setShowMore] = React.useState(false)
+  const preview = text.split('<br>').slice(0, 3).join('<br>')
+
   return (
-    <AboutContainer>
+    <AboutContainer id="about">
       <AboutTitle>{title}</AboutTitle>
-      <AboutText dangerouslySetInnerHTML={{ __html: text }}></AboutText>
+      <AboutText
+        dangerouslySetInnerHTML={{ __html: showMore ? text : preview }}
+      ></AboutText>
+      <button
+        type="button"
+        onClick={() => setShowMore(prev => !prev)}
+        style={{
+          marginTop: '1rem',
+          border: 'none',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          color: 'white',
+          padding: '0.75rem 1.3rem',
+          borderRadius: '999px',
+          cursor: 'pointer',
+          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
+          fontWeight: 700,
+          transition: 'transform 0.2s ease',
+        }}
+        onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-2px)')}
+        onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
+      >
+        {showMore ? 'Show less' : 'Read more'}
+      </button>
     </AboutContainer>
   )
 }

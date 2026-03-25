@@ -4,20 +4,27 @@ const Wrapper = styled.main.attrs({
   role: 'main',
 })`
   position: relative;
-  border-radius: 3px;
+  border-radius: 24px;
   width: 80%;
-  max-width: 960px;
-  border-bottom: 1px solid #ebf2f6;
+  max-width: 1100px;
   word-wrap: break-word;
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
   margin: 0px auto 30px auto;
   top: -100px;
-  padding: 50px;
-  box-shadow: 0 0 0 0, 0 6px 12px rgba(0, 0, 0, 0.1);
-  min-height: 150px;
+  padding: 40px;
+  box-shadow: 0 18px 40px rgba(31, 41, 55, 0.18);
+  min-height: 200px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 50px rgba(31, 41, 55, 0.22);
+  }
 
   @media (max-width: 780px) {
-    width: 90%;
+    width: 92%;
     padding: 25px;
   }
 `
