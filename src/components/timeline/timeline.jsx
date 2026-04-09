@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from 'react-awesome-styled-grid'
 import siteConfig from '../../../data/siteConfig'
+import { useTranslation } from '../../i18n/translations'
 import JobDetailModal from './job-detail-modal'
 
 const TimelineContainer = styled.div`
@@ -28,20 +29,34 @@ const TimelineContainer = styled.div`
   }
 
   @media (max-width: 768px) {
+    padding: 0 0.75rem;
+
     &::before {
       left: 20px;
     }
   }
+
+  @media (max-width: 480px) {
+    padding: 0 0.5rem;
+  }
 `
 
 const TimelineTitle = styled.h1`
-  font-size: 2.8rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
   color: #2c3e50;
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: -0.02em;
   text-transform: none;
+
+  @media (max-width: 640px) {
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+  }
 `
 
 const TimelineItem = styled.article`
@@ -84,10 +99,21 @@ const TimelineItem = styled.article`
   }
 
   @media (max-width: 768px) {
+    margin: 0 0 40px 0;
+
     &:nth-child(even) .timeline__inner,
     &:nth-child(odd) .timeline__inner {
       margin-left: 70px !important;
       margin-right: 0 !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 0 35px 0;
+
+    &:nth-child(even) .timeline__inner,
+    &:nth-child(odd) .timeline__inner {
+      margin-left: 65px !important;
     }
   }
 `
@@ -130,6 +156,12 @@ const TimelineInner = styled.button`
       }
     }
   }
+
+  @media (max-width: 480px) {
+    &:active {
+      transform: translateY(-3px);
+    }
+  }
 `
 
 const TimelineDate = styled.span`
@@ -162,6 +194,12 @@ const TimelineDate = styled.span`
     margin-left: 0;
     font-size: 10px;
   }
+
+  @media (max-width: 480px) {
+    width: 65px;
+    height: 65px;
+    font-size: 9px;
+  }
 `
 
 const TimelineMonth = styled.span`
@@ -170,6 +208,10 @@ const TimelineMonth = styled.span`
   font-weight: 800;
   letter-spacing: 0.3px;
   line-height: 1.2;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `
 
 const TimelineYear = styled.span`
@@ -178,6 +220,10 @@ const TimelineYear = styled.span`
   opacity: 0.85;
   font-weight: 700;
   letter-spacing: 0.3px;
+
+  @media (max-width: 480px) {
+    font-size: 9px;
+  }
 `
 
 const TimelineContent = styled.div`
@@ -190,31 +236,52 @@ const TimelineContent = styled.div`
   justify-content: space-between;
   gap: 16px;
 
+  @media (max-width: 768px) {
+    padding: 24px;
+    gap: 12px;
+  }
+
   @media (max-width: 640px) {
     padding: 20px;
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
   }
 `
 
 const ContentLeft = styled.div`
   flex: 1;
   min-width: 0;
+  width: 100%;
 `
 
 const JobTitle = styled.h2`
   margin: 0 0 6px 0;
   color: #2c3e50;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 3vw, 1.3rem);
   font-weight: 700;
   text-transform: none;
   letter-spacing: -0.005em;
   line-height: 1.3;
   transition: all 0.3s ease;
+  word-break: break-word;
+
+  @media (max-width: 640px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+  }
 `
 
 const JobCompany = styled.small`
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
   color: #3498db;
   font-weight: 600;
   display: block;
@@ -222,6 +289,12 @@ const JobCompany = styled.small`
   letter-spacing: 0.2px;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  word-break: break-word;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
 `
 
 const JobDuration = styled.small`
@@ -231,6 +304,11 @@ const JobDuration = styled.small`
   margin-top: 0.3rem;
   font-weight: 500;
   transition: all 0.3s ease;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
 `
 
 const ViewMoreBadge = styled.div`
@@ -249,16 +327,24 @@ const ViewMoreBadge = styled.div`
 
   @media (max-width: 640px) {
     align-self: flex-start;
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px 10px;
+    font-size: 0.65rem;
   }
 `
 
 const Timeline = ({ className }) => {
   const [selectedJob, setSelectedJob] = useState(null)
+  const t = useTranslation('es')
 
   return (
     <>
       <TimelineContainer className={className}>
-        <TimelineTitle>Professional Experience</TimelineTitle>
+        <TimelineTitle>{t.professionalExperience}</TimelineTitle>
         {siteConfig.jobs && siteConfig.jobs.map((job, index) => {
           const jobKey = `${job.begin.month}-${job.begin.year}`
 
@@ -277,10 +363,10 @@ const Timeline = ({ className }) => {
                   <ContentLeft>
                     <JobTitle>{job.occupation}</JobTitle>
                     <JobCompany>{job.company}</JobCompany>
-                    <JobDuration>{job.duration || 'Present'}</JobDuration>
+                    <JobDuration>{job.duration || t.present}</JobDuration>
                   </ContentLeft>
                   <ViewMoreBadge className="timeline__badge">
-                    View Details →
+                    {t.viewDetails}
                   </ViewMoreBadge>
                 </TimelineContent>
               </TimelineInner>

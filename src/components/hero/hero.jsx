@@ -1,5 +1,6 @@
 import React from 'react'
 import siteConfig from '../../../data/siteConfig'
+import { useTranslation } from '../../i18n/translations'
 import styled from 'styled-components'
 
 const HeroContainer = styled.div`
@@ -51,6 +52,17 @@ const HeroContainer = styled.div`
       transform: translateY(0px) rotate(0deg) scale(1); 
     }
   }
+
+  @media (max-width: 768px) {
+    margin-top: 70px;
+
+    &::after {
+      right: -30%;
+      bottom: -40%;
+      width: 100%;
+      height: 100%;
+    }
+  }
 `
 
 const TitleContainer = styled.div`
@@ -66,11 +78,20 @@ const TitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `
 
 const HeroTitle = styled.h1`
   font-weight: 800;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 6vw, 4.5rem);
   margin: 0 0 1.5rem 0;
   color: #fff;
   text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
@@ -88,19 +109,26 @@ const HeroTitle = styled.h1`
       transform: translateY(0);
     }
   }
+
+  @media (max-width: 640px) {
+    margin: 0 0 1rem 0;
+  }
 `
 
 const HeroSubtitle = styled.p`
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-size: clamp(0.85rem, 2.5vw, 1.25rem);
   color: rgba(255, 255, 255, 0.95);
-  margin: 0 0 3rem 0;
+  margin: 0 0 2rem 0;
   font-weight: 300;
-  max-width: 700px;
+  max-width: 95%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
   line-height: 1.6;
   animation: slideInUp 1s ease-out 0.2s both;
+  padding: 0 1rem;
+  box-sizing: border-box;
   
   @keyframes slideInUp {
     from {
@@ -112,17 +140,31 @@ const HeroSubtitle = styled.p`
       transform: translateY(0);
     }
   }
+  
+  @media (max-width: 640px) {
+    font-size: 0.9rem;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    margin: 0 0 1.2rem 0;
+    line-height: 1.4;
+  }
 `
 
 const CTAButton = styled.a`
   display: inline-block;
   background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
   color: white;
-  padding: 1.2rem 2.8rem;
+  padding: 1rem 2.2rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   box-shadow: 0 8px 24px rgba(52, 152, 219, 0.25);
   border: 2px solid transparent;
@@ -130,6 +172,7 @@ const CTAButton = styled.a`
   overflow: hidden;
   animation: slideInUp 1s ease-out 0.4s both;
   letter-spacing: 0.3px;
+  white-space: nowrap;
   
   &::before {
     content: '';
@@ -158,6 +201,26 @@ const CTAButton = styled.a`
   &:active {
     transform: translateY(-2px);
   }
+  
+  @media (max-width: 768px) {
+    padding: 0.9rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.8rem;
+    
+    &:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+  }
 `
 
 const ScrollIndicator = styled.div`
@@ -184,21 +247,31 @@ const ScrollIndicator = styled.div`
     height: 24px;
     color: rgba(255, 255, 255, 0.8);
   }
+
+  @media (max-width: 640px) {
+    bottom: 20px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `
 
 class Hero extends React.Component {
   render() {
     const { title, className } = this.props
+    const t = useTranslation('es')
 
     return (
       <HeroContainer className={className}>
         <TitleContainer>
           <HeroTitle>{title}</HeroTitle>
           <HeroSubtitle>
-            Development & Integration Lead | Solution Architect | AI-Assisted Development Explorer | Blockchain Enthusiast
+            {t.heroSubtitle}
           </HeroSubtitle>
-          <CTAButton href="#about" aria-label="Scroll to About section">
-            ✨ Explore My Work
+          <CTAButton href="#about" aria-label={t.scrollToAbout}>
+            {t.exploreMy}
           </CTAButton>
         </TitleContainer>
         <ScrollIndicator>
@@ -219,4 +292,8 @@ export default styled(Hero)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+  }
 `

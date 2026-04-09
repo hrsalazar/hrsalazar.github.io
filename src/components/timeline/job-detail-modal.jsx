@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from '../../i18n/translations'
 
 const Overlay = styled.div`
   position: fixed;
@@ -31,7 +32,7 @@ const ModalBubble = styled.div`
   border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
   max-width: 800px;
-  width: 100%;
+  width: 95%;
   max-height: 85vh;
   overflow-y: auto;
   animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -52,6 +53,13 @@ const ModalBubble = styled.div`
   @media (max-width: 768px) {
     max-height: 90vh;
     border-radius: 16px;
+    width: 96%;
+  }
+
+  @media (max-width: 480px) {
+    max-height: 95vh;
+    border-radius: 12px;
+    width: 98%;
   }
 
   /* Custom scrollbar */
@@ -87,6 +95,12 @@ const ModalHeader = styled.div`
 
   @media (max-width: 768px) {
     padding: 24px 20px;
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    gap: 10px;
   }
 `
 
@@ -96,30 +110,43 @@ const HeaderContent = styled.div`
 
 const JobCompany = styled.h3`
   margin: 0 0 8px 0;
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 2.5vw, 0.9rem);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   letter-spacing: 1px;
+  word-break: break-word;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    margin: 0 0 4px 0;
+  }
 `
 
 const JobTitle = styled.h2`
   margin: 0 0 8px 0;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
   font-weight: 800;
   color: #ffffff;
   line-height: 1.3;
+  word-break: break-word;
 
-  @media (max-width: 768px) {
-    font-size: 1.3rem;
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin: 0 0 4px 0;
   }
 `
 
 const JobDuration = styled.p`
   margin: 0;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   color: rgba(255, 255, 255, 0.85);
   font-weight: 500;
+  word-break: break-word;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 `
 
 const CloseButton = styled.button`
@@ -136,6 +163,7 @@ const CloseButton = styled.button`
   font-size: 1.5rem;
   transition: all 0.3s ease;
   flex-shrink: 0;
+  min-width: 40px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
@@ -146,6 +174,13 @@ const CloseButton = styled.button`
   &:active {
     transform: rotate(90deg) scale(0.95);
   }
+
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+    min-width: 36px;
+  }
 `
 
 const ModalContent = styled.div`
@@ -154,6 +189,10 @@ const ModalContent = styled.div`
 
   @media (max-width: 768px) {
     padding: 24px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
   }
 `
 
@@ -166,11 +205,13 @@ const BulletPointList = styled.div`
 const BulletPoint = styled.div`
   display: flex;
   gap: 14px;
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
   line-height: 1.7;
   color: #34495e;
   animation: slideIn 0.4s ease-out backwards;
   animation-delay: ${props => props.delay || '0s'};
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   @keyframes slideIn {
     from {
@@ -190,16 +231,37 @@ const BulletPoint = styled.div`
     flex-shrink: 0;
     font-size: 1.2rem;
     line-height: 1.7;
+    min-width: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    gap: 10px;
+    line-height: 1.6;
+
+    &::before {
+      font-size: 1rem;
+      min-width: 1rem;
+    }
   }
 `
 
 const EmptyState = styled.p`
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
   line-height: 1.7;
   color: #34495e;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
 `
 
 const JobDetailModal = ({ job, isOpen, onClose }) => {
+  const t = useTranslation('es')
+
   if (!isOpen) return null
 
   const items = job.description
@@ -220,9 +282,9 @@ const JobDetailModal = ({ job, isOpen, onClose }) => {
           <HeaderContent>
             <JobCompany>{job.company}</JobCompany>
             <JobTitle>{job.occupation}</JobTitle>
-            <JobDuration>{job.duration || 'Present'}</JobDuration>
+            <JobDuration>{job.duration || t.present}</JobDuration>
           </HeaderContent>
-          <CloseButton onClick={onClose} aria-label="Close" title="Close">
+          <CloseButton onClick={onClose} aria-label={t.closeModal} title={t.closeModal}>
             ✕
           </CloseButton>
         </ModalHeader>
