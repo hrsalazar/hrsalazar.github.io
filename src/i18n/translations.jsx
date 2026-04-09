@@ -1,18 +1,19 @@
+import React, { createContext, useState, useContext } from 'react'
+
 export const translations = {
   es: {
     // Hero Section
     heroSubtitle: 'Director de Desarrollo e Integración | Arquitecto de Soluciones | Explorador de Desarrollo Asistido por IA | Entusiasta de Blockchain',
     exploreMy: '✨ Explorar Mi Trabajo',
+    scrollToAbout: 'Desplácese a la sección Acerca de',
 
     // Navigation
-    scrollToAbout: 'Desplácese a la sección Acerca de',
+    headerHome: 'Héctor Salazar',
 
     // Timeline
     professionalExperience: 'Experiencia Profesional',
     viewDetails: 'Ver Detalles →',
     present: 'Presente',
-
-    // Modal
     closeModal: 'Cerrar',
 
     // About Section
@@ -26,24 +27,24 @@ export const translations = {
     // Repositories
     repositoriesTitle: 'Últimos repositorios en Github',
     updated: 'Actualizado:',
+    noDescription: 'Sin descripción',
 
-    // Job Detail Modal
-    jobDescription: 'Descripción del Trabajo',
+    // Loader
+    loading: 'Cargando...',
   },
   en: {
     // Hero Section
     heroSubtitle: 'Development & Integration Lead | Solution Architect | AI-Assisted Development Explorer | Blockchain Enthusiast',
     exploreMy: '✨ Explore My Work',
+    scrollToAbout: 'Scroll to About section',
 
     // Navigation
-    scrollToAbout: 'Scroll to About section',
+    headerHome: 'Héctor Salazar',
 
     // Timeline
     professionalExperience: 'Professional Experience',
     viewDetails: 'View Details →',
     present: 'Present',
-
-    // Modal
     closeModal: 'Close',
 
     // About Section
@@ -57,12 +58,46 @@ export const translations = {
     // Repositories
     repositoriesTitle: 'Latest repositories on Github',
     updated: 'Updated:',
+    noDescription: 'No description',
 
-    // Job Detail Modal
-    jobDescription: 'Job Description',
+    // Loader
+    loading: 'Loading...',
   }
 }
 
-export const useTranslation = (lang = 'es') => {
-  return translations[lang] || translations.en
+const LanguageContext = createContext()
+
+export const LanguageProvider = ({ children }) => {
+  const [language, setLanguage] = useState('es')
+
+  const toggleLanguage = () => {
+    setLanguage(lang => lang === 'es' ? 'en' : 'es')
+  }
+
+  const t = (key) => {
+    return translations[language]?.[key] || key
+  }
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  )
+}
+
+export const useLanguage = () => {
+  const context = useContext(LanguageContext)
+  if (!context) {
+    throw new Error('useLanguage must be used within LanguageProvider')
+  }
+  return context
+}
+
+export const useTranslation = (defaultLang = 'es') => {
+  const context = useContext(LanguageContext)
+  if (context) {
+    return context.t
+  }
+  // Fallback if not using context
+  return (key) => translations[defaultLang]?.[key] || key
 }

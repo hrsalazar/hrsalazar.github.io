@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { config } from 'react-awesome-styled-grid'
 import siteConfig from '../../../data/siteConfig'
-import { useTranslation } from '../../i18n/translations'
+import { useLanguage } from '../../i18n/translations.jsx'
 import JobDetailModal from './job-detail-modal'
 
 const TimelineContainer = styled.div`
@@ -339,12 +339,12 @@ const ViewMoreBadge = styled.div`
 
 const Timeline = ({ className }) => {
   const [selectedJob, setSelectedJob] = useState(null)
-  const t = useTranslation('es')
+  const { t } = useLanguage()
 
   return (
     <>
       <TimelineContainer className={className}>
-        <TimelineTitle>{t.professionalExperience}</TimelineTitle>
+        <TimelineTitle>{t('professionalExperience')}</TimelineTitle>
         {siteConfig.jobs && siteConfig.jobs.map((job, index) => {
           const jobKey = `${job.begin.month}-${job.begin.year}`
 
@@ -363,10 +363,10 @@ const Timeline = ({ className }) => {
                   <ContentLeft>
                     <JobTitle>{job.occupation}</JobTitle>
                     <JobCompany>{job.company}</JobCompany>
-                    <JobDuration>{job.duration || t.present}</JobDuration>
+                    <JobDuration>{job.duration || t('present')}</JobDuration>
                   </ContentLeft>
                   <ViewMoreBadge className="timeline__badge">
-                    {t.viewDetails}
+                    {t('viewDetails')}
                   </ViewMoreBadge>
                 </TimelineContent>
               </TimelineInner>

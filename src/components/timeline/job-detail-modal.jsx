@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '../../i18n/translations'
+import { useLanguage } from '../../i18n/translations.jsx'
 
 const Overlay = styled.div`
   position: fixed;
@@ -260,7 +260,7 @@ const EmptyState = styled.p`
 `
 
 const JobDetailModal = ({ job, isOpen, onClose }) => {
-  const t = useTranslation('es')
+  const { t } = useLanguage()
 
   if (!isOpen) return null
 

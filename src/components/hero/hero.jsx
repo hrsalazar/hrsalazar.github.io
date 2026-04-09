@@ -1,6 +1,6 @@
 import React from 'react'
 import siteConfig from '../../../data/siteConfig'
-import { useTranslation } from '../../i18n/translations'
+import { useLanguage } from '../../i18n/translations.jsx'
 import styled from 'styled-components'
 
 const HeroContainer = styled.div`
@@ -258,40 +258,42 @@ const ScrollIndicator = styled.div`
   }
 `
 
-class Hero extends React.Component {
-  render() {
-    const { title, className } = this.props
-    const t = useTranslation('es')
+function Hero({ title, className, heroImg }) {
+  const { t } = useLanguage()
 
-    return (
-      <HeroContainer className={className}>
-        <TitleContainer>
-          <HeroTitle>{title}</HeroTitle>
-          <HeroSubtitle>
-            {t.heroSubtitle}
-          </HeroSubtitle>
-          <CTAButton href="#about" aria-label={t.scrollToAbout}>
-            {t.exploreMy}
-          </CTAButton>
-        </TitleContainer>
-        <ScrollIndicator>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </ScrollIndicator>
-      </HeroContainer>
-    )
-  }
+  return (
+    <HeroContainer className={className} style={{ backgroundImage: `url(${heroImg || siteConfig.siteCover})` }}>
+      <TitleContainer>
+        <HeroTitle>{title}</HeroTitle>
+        <HeroSubtitle>
+          {t('heroSubtitle')}
+        </HeroSubtitle>
+        <CTAButton href="#about" aria-label={t('scrollToAbout')}>
+          {t('exploreMy')}
+        </CTAButton>
+      </TitleContainer>
+      <ScrollIndicator>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </ScrollIndicator>
+    </HeroContainer>
+  )
+}
+
+Hero.defaultProps = {
+  title: 'Hector Salazar',
+  className: '',
+  heroImg: null
 }
 
 export default styled(Hero)`
-  ${p => `background-image: url(${p.heroImg || siteConfig.siteCover});`}
-  height: auto;
-  min-height: 100vh;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: auto;
+  min-height: 100vh;
 
   @media (max-width: 768px) {
     background-attachment: scroll;

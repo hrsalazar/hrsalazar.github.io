@@ -1,7 +1,8 @@
-import React from "react";
-import jsonFetch from "simple-json-fetch";
+import React from "react"
+import jsonFetch from "simple-json-fetch"
 import styled from 'styled-components'
 import siteConfig from '../../../data/siteConfig'
+import { useLanguage } from '../../i18n/translations.jsx'
 
 import Loader from '../loader'
 
@@ -11,23 +12,45 @@ const endpoint =
 const RepositoriesWrapper = styled.div`
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 `
 
 const RepositoriesTitle = styled.h2`
-  font-size: 2.8rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
   color: #2c3e50;
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: -0.02em;
   text-transform: none;
+
+  @media (max-width: 640px) {
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+  }
 `
 
 const RepositoriesContent = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
 `
 
 const RepositoryCard = styled.div`
@@ -41,6 +64,7 @@ const RepositoryCard = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 
   &::before {
     content: '';
@@ -64,6 +88,10 @@ const RepositoryCard = styled.div`
       transform: scaleX(1);
     }
   }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+  }
 `
 
 const RepositoryLink = styled.a`
@@ -72,28 +100,44 @@ const RepositoryLink = styled.a`
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 `
 
 const RepositoryName = styled.strong`
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 3vw, 1.3rem);
   font-weight: 800;
   color: #2c3e50;
   margin-bottom: 1rem;
   transition: color 0.3s ease;
   letter-spacing: -0.01em;
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   ${RepositoryCard}:hover & {
     color: #3498db;
   }
+
+  @media (max-width: 480px) {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
 `
 
 const RepositoryDescription = styled.div`
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
   line-height: 1.6;
   color: #34495e;
   margin-bottom: 1.5rem;
   flex: 1;
   min-height: 60px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    min-height: auto;
+  }
 `
 
 const RepositoryMeta = styled.div`
@@ -101,13 +145,27 @@ const RepositoryMeta = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  font-size: 0.8rem;
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
   color: #7f8c8d;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 `
 
 const RepositoryDate = styled.span`
   color: #95a5a6;
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  white-space: nowrap;
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    width: 100%;
+  }
 `
 
 const RepositoryStar = styled.span`
@@ -116,7 +174,14 @@ const RepositoryStar = styled.span`
   gap: 0.4rem;
   font-weight: 700;
   color: #3498db;
-  font-size: 0.9rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  white-space: nowrap;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    width: 100%;
+    justify-content: space-between;
+  }
 `
 
 const RepositoriesLoader = styled.div`
@@ -124,55 +189,64 @@ const RepositoriesLoader = styled.div`
   justify-content: center;
   align-items: center;
   padding: 3rem;
+
+  @media (max-width: 480px) {
+    padding: 2rem;
+  }
 `
 
-class Repositories extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      repos: [],
-      status: 'loading'
+function Repositories() {
+  const [repos, setRepos] = React.useState([])
+  const [status, setStatus] = React.useState('loading')
+  const { t } = useLanguage()
+
+  React.useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await jsonFetch(endpoint)
+        if (response.json && response.json.length) {
+          setRepos(response.json)
+          setStatus('ready')
+        }
+      } catch (error) {
+        console.error('Failed to fetch repositories:', error)
+        setStatus('ready')
+      }
     }
-  }
-  async componentDidMount () {
-    const repos = await jsonFetch(endpoint);
-    if (repos.json && repos.json.length) {
-      this.setState({ repos: repos.json, status: 'ready' })
-    }
-  }
-  render () {
-    const { status } = this.state
-    return (
-      <RepositoriesWrapper>
-        <RepositoriesTitle>Latest repositories on Github</RepositoriesTitle>
-        {status === "loading" && <RepositoriesLoader><Loader /></RepositoriesLoader>}
-        {status === "ready" && this.state.repos && (
-          <RepositoriesContent>
-            {this.state.repos.map(repo => (
-              <RepositoryCard key={repo.name}>
-                <RepositoryLink href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                  <RepositoryName>{repo.name}</RepositoryName>
-                  <RepositoryDescription>{repo.description || 'No description'}</RepositoryDescription>
-                </RepositoryLink>
-                <RepositoryMeta>
-                  <RepositoryDate>
-                    Updated: {new Date(repo.updated_at).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'short', 
-                      day: 'numeric' 
-                    })}
-                  </RepositoryDate>
-                  <RepositoryStar>
-                    ★ {repo.stargazers_count}
-                  </RepositoryStar>
-                </RepositoryMeta>
-              </RepositoryCard>
-            ))}
-          </RepositoriesContent>
-        )}
-      </RepositoriesWrapper>
-    )
-  }
+
+    fetchRepos()
+  }, [])
+
+  return (
+    <RepositoriesWrapper>
+      <RepositoriesTitle>{t('repositoriesTitle')}</RepositoriesTitle>
+      {status === "loading" && <RepositoriesLoader><Loader /></RepositoriesLoader>}
+      {status === "ready" && repos && repos.length > 0 && (
+        <RepositoriesContent>
+          {repos.map(repo => (
+            <RepositoryCard key={repo.name}>
+              <RepositoryLink href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                <RepositoryName>{repo.name}</RepositoryName>
+                <RepositoryDescription>{repo.description || t('noDescription')}</RepositoryDescription>
+              </RepositoryLink>
+              <RepositoryMeta>
+                <RepositoryDate>
+                  {t('updated')} {new Date(repo.updated_at).toLocaleDateString('es-ES', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                  })}
+                </RepositoryDate>
+                <RepositoryStar>
+                  ★ {repo.stargazers_count}
+                </RepositoryStar>
+              </RepositoryMeta>
+            </RepositoryCard>
+          ))}
+        </RepositoriesContent>
+      )}
+    </RepositoriesWrapper>
+  )
 }
 
 export default Repositories
