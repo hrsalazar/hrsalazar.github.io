@@ -8,6 +8,8 @@ const Wrapper = styled.main.attrs({
   width: 80%;
   max-width: 1100px;
   word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(15px);
@@ -17,6 +19,8 @@ const Wrapper = styled.main.attrs({
   box-shadow: 0 18px 40px rgba(31, 41, 55, 0.18);
   min-height: 200px;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-sizing: border-box;
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-4px);
