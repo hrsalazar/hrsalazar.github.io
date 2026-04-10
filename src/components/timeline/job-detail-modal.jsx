@@ -8,14 +8,14 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   z-index: 999;
   animation: fadeIn 0.3s ease;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
 
   @keyframes fadeIn {
     from {
@@ -28,16 +28,16 @@ const Overlay = styled.div`
 `
 
 const ModalBubble = styled.div`
-  background: #ffffff;
+  background: #12121a;
   border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(99, 102, 241, 0.1);
   max-width: 800px;
   width: 95%;
   max-height: 85vh;
   overflow-y: auto;
   animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
-  border: 1px solid rgba(52, 152, 219, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.15);
 
   @keyframes slideUp {
     from {
@@ -68,21 +68,21 @@ const ModalBubble = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    background: #f5f7fa;
+    background: #12121a;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+    background: linear-gradient(180deg, #6366f1 0%, #a855f7 100%);
     border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #34495e 0%, #2980b9 100%);
+    background: linear-gradient(180deg, #a855f7 0%, #6366f1 100%);
   }
 `
 
 const ModalHeader = styled.div`
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   padding: 32px 36px;
   border-radius: 20px 20px 0 0;
   position: sticky;
@@ -185,7 +185,7 @@ const CloseButton = styled.button`
 
 const ModalContent = styled.div`
   padding: 36px;
-  color: #34495e;
+  color: #a0a0b8;
 
   @media (max-width: 768px) {
     padding: 24px 20px;
@@ -207,7 +207,7 @@ const BulletPoint = styled.div`
   gap: 14px;
   font-size: clamp(0.85rem, 2vw, 0.95rem);
   line-height: 1.7;
-  color: #34495e;
+  color: #a0a0b8;
   animation: slideIn 0.4s ease-out backwards;
   animation-delay: ${props => props.delay || '0s'};
   word-break: break-word;
@@ -226,7 +226,7 @@ const BulletPoint = styled.div`
 
   &::before {
     content: '→';
-    color: #3498db;
+    color: #a855f7;
     font-weight: 900;
     flex-shrink: 0;
     font-size: 1.2rem;
@@ -249,7 +249,7 @@ const BulletPoint = styled.div`
 const EmptyState = styled.p`
   font-size: clamp(0.85rem, 2vw, 0.95rem);
   line-height: 1.7;
-  color: #34495e;
+  color: #a0a0b8;
   word-break: break-word;
   overflow-wrap: break-word;
 

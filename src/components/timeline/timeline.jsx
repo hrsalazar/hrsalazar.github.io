@@ -23,9 +23,9 @@ const TimelineContainer = styled.div`
     margin: 0 0 0 -2px;
     width: 3px;
     height: calc(100% - 100px);
-    background: linear-gradient(180deg, #2c3e50 0%, #3498db 50%, #2c3e50 100%);
+    background: linear-gradient(180deg, #6366f1 0%, #a855f7 50%, #6366f1 100%);
     border-radius: 2px;
-    box-shadow: 0 0 16px rgba(52, 152, 219, 0.15);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -44,11 +44,15 @@ const TimelineContainer = styled.div`
 const TimelineTitle = styled.h1`
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
-  color: #2c3e50;
+  color: #f0f0f5;
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: -0.02em;
   text-transform: none;
+  background: linear-gradient(135deg, #f0f0f5 0%, #a0a0b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   @media (max-width: 640px) {
     margin-bottom: 2rem;
@@ -120,10 +124,10 @@ const TimelineItem = styled.article`
 
 const TimelineInner = styled.button`
   width: 100%;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  border: 2px solid #e8eef5;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: all 0.35s ease;
   overflow: hidden;
   box-sizing: border-box;
@@ -134,24 +138,24 @@ const TimelineInner = styled.button`
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-    border-color: #3498db;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 30px rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
 
     .timeline__date {
       transform: scale(1.1);
-      box-shadow: 0 8px 24px rgba(52, 152, 219, 0.35);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
     }
 
     .timeline__content {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      background: rgba(99, 102, 241, 0.08);
       
       h2, small {
         color: #ffffff;
       }
 
       .timeline__badge {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(99, 102, 241, 0.3);
+        border-color: rgba(99, 102, 241, 0.5);
         color: #ffffff;
       }
     }
@@ -180,9 +184,9 @@ const TimelineDate = styled.span`
   font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
   color: #fff;
-  box-shadow: 0 6px 20px rgba(44, 62, 80, 0.25);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
   z-index: 2;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
@@ -228,7 +232,7 @@ const TimelineYear = styled.span`
 
 const TimelineContent = styled.div`
   padding: 28px;
-  background: #ffffff;
+  background: transparent;
   border-radius: 12px;
   transition: all 0.3s ease;
   display: flex;
@@ -261,7 +265,7 @@ const ContentLeft = styled.div`
 
 const JobTitle = styled.h2`
   margin: 0 0 6px 0;
-  color: #2c3e50;
+  color: #f0f0f5;
   font-size: clamp(1rem, 3vw, 1.3rem);
   font-weight: 700;
   text-transform: none;
@@ -282,7 +286,7 @@ const JobTitle = styled.h2`
 
 const JobCompany = styled.small`
   font-size: clamp(0.75rem, 2vw, 0.85rem);
-  color: #3498db;
+  color: #a855f7;
   font-weight: 600;
   display: block;
   margin-top: 0.4rem;
@@ -299,7 +303,7 @@ const JobCompany = styled.small`
 
 const JobDuration = styled.small`
   font-size: 0.8rem;
-  color: #7f8c8d;
+  color: #6b6b80;
   display: block;
   margin-top: 0.3rem;
   font-weight: 500;
@@ -312,9 +316,9 @@ const JobDuration = styled.small`
 `
 
 const ViewMoreBadge = styled.div`
-  background: #ecf0f1;
-  border: 1.5px solid #3498db;
-  color: #3498db;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1.5px solid rgba(99, 102, 241, 0.4);
+  color: #a0a0ff;
   padding: 8px 14px;
   border-radius: 20px;
   font-weight: 700;

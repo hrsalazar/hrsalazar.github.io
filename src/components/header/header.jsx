@@ -12,10 +12,10 @@ const HeaderWrapper = styled.header`
   display: block;
   width: 100%;
   z-index: 1000;
-  background: rgba(44, 62, 80, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(52, 152, 219, 0.1);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 `
 
 const HeaderNav = styled.nav`
@@ -56,7 +56,7 @@ const HeaderLink = styled.a`
   text-decoration: none;
   display: flex;
   align-items: center;
-  color: #ecf0f1;
+  color: rgba(240, 240, 245, 0.7);
   border: 0;
   margin: 0;
   padding: 0.5rem 0.5rem;
@@ -73,8 +73,9 @@ const HeaderLink = styled.a`
     left: 0;
     width: 0;
     height: 2px;
-    background: #3498db;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
     transition: width 0.3s ease;
+    border-radius: 2px;
   }
   
   &:hover::after {
@@ -82,7 +83,7 @@ const HeaderLink = styled.a`
   }
   
   &:hover {
-    color: #3498db;
+    color: #f0f0f5;
   }
 
   @media (max-width: 640px) {
@@ -92,9 +93,9 @@ const HeaderLink = styled.a`
 `
 
 const LanguageToggle = styled.button`
-  background: rgba(52, 152, 219, 0.2);
-  border: 1.5px solid rgba(52, 152, 219, 0.5);
-  color: #3498db;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1.5px solid rgba(99, 102, 241, 0.4);
+  color: #a0a0ff;
   padding: 0.5rem 0.8rem;
   border-radius: 20px;
   cursor: pointer;
@@ -110,10 +111,11 @@ const LanguageToggle = styled.button`
   margin-left: 0.5rem;
 
   &:hover {
-    background: rgba(52, 152, 219, 0.4);
-    border-color: rgba(52, 152, 219, 0.8);
+    background: rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.7);
     color: #ffffff;
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
   }
 
   &:active {
@@ -143,7 +145,7 @@ const GithubLink = styled.a`
   position: relative;
   display: flex;
   align-items: center;
-  color: #ecf0f1;
+  color: rgba(240, 240, 245, 0.7);
   border: 0;
   margin: 0;
   padding: 0.5rem;
@@ -152,7 +154,7 @@ const GithubLink = styled.a`
   cursor: pointer;
   
   &:hover {
-    color: #3498db;
+    color: #a855f7;
     transform: scale(1.1);
   }
 

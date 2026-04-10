@@ -22,7 +22,12 @@ const HeroContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.85) 0%, rgba(44, 62, 80, 0.65) 45%, rgba(52, 152, 219, 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(10, 10, 15, 0.92) 0%,
+      rgba(10, 10, 15, 0.75) 40%,
+      rgba(99, 102, 241, 0.15) 100%
+    );
     z-index: 2;
     pointer-events: none;
   }
@@ -34,7 +39,7 @@ const HeroContainer = styled.div`
     bottom: -35%;
     width: 80%;
     height: 80%;
-    background: radial-gradient(circle at 70% 70%, rgba(52, 152, 219, 0.15), transparent 60%);
+    background: radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.12), transparent 60%);
     transform: rotate(-10deg);
     z-index: 1;
     pointer-events: none;
@@ -158,7 +163,7 @@ const HeroSubtitle = styled.p`
 
 const CTAButton = styled.a`
   display: inline-block;
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
   color: white;
   padding: 1rem 2.2rem;
   border-radius: 50px;
@@ -166,8 +171,8 @@ const CTAButton = styled.a`
   font-weight: 700;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.25);
-  border: 2px solid transparent;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
   animation: slideInUp 1s ease-out 0.4s both;
@@ -182,7 +187,7 @@ const CTAButton = styled.a`
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
   }
@@ -194,8 +199,8 @@ const CTAButton = styled.a`
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 35px rgba(52, 152, 219, 0.35);
-    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    box-shadow: 0 14px 40px rgba(99, 102, 241, 0.45);
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
   }
   
   &:active {
