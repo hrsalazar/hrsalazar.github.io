@@ -853,32 +853,3 @@ main,
   box-sizing: border-box;
   overflow-x: hidden;
 }
-
-/* Custom scrollbar (legacy override) */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #34495e 0%, #2980b9 100%);
-}
-
-/* Selection styling */
-::selection {
-  background: #2c3e50;
-  color: white;
-}
-
-::-moz-selection {
-  background: #2c3e50;
-  color: white;
-}
