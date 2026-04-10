@@ -41,7 +41,7 @@ export default styled(SkillBar)`
 
   label {
     font-weight: 700;
-    color: #2c3e50;
+    color: #f0f0f5;
     font-size: 0.95rem;
     margin: 0;
     letter-spacing: -0.01em;
@@ -49,27 +49,27 @@ export default styled(SkillBar)`
 
   .skill-percentage {
     font-weight: 800;
-    color: #3498db;
+    color: #a855f7;
     font-size: 1rem;
   }
 
   .skill__bar {
     height: 12px;
-    background: #e8eef5;
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 10px;
     padding: 1px;
-    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     position: relative;
   }
 
   .skill__level {
-    background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+    background: linear-gradient(90deg, #6366f1 0%, #a855f7 60%, #06b6d4 100%);
     height: 10px;
     border-radius: 8px;
     transition: width 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
-    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3);
 
     &::after {
       content: '';
@@ -99,7 +99,7 @@ export default styled(SkillBar)`
   }
 
   &:hover .skill__level {
-    filter: brightness(1.1);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    filter: brightness(1.15);
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
   }
 `

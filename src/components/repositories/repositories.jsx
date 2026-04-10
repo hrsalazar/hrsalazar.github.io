@@ -18,11 +18,15 @@ const RepositoriesWrapper = styled.div`
 const RepositoriesTitle = styled.h2`
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 800;
-  color: #2c3e50;
+  color: #f0f0f5;
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: -0.02em;
   text-transform: none;
+  background: linear-gradient(135deg, #f0f0f5 0%, #a0a0b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   @media (max-width: 640px) {
     margin-bottom: 2rem;
@@ -54,11 +58,11 @@ const RepositoriesContent = styled.div`
 `
 
 const RepositoryCard = styled.div`
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e8eef5;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -73,7 +77,7 @@ const RepositoryCard = styled.div`
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+    background: linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #06b6d4 100%);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -81,8 +85,8 @@ const RepositoryCard = styled.div`
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-    border-color: #3498db;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 30px rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
 
     &::before {
       transform: scaleX(1);
@@ -106,7 +110,7 @@ const RepositoryLink = styled.a`
 const RepositoryName = styled.strong`
   font-size: clamp(1rem, 3vw, 1.3rem);
   font-weight: 800;
-  color: #2c3e50;
+  color: #f0f0f5;
   margin-bottom: 1rem;
   transition: color 0.3s ease;
   letter-spacing: -0.01em;
@@ -114,7 +118,7 @@ const RepositoryName = styled.strong`
   overflow-wrap: break-word;
 
   ${RepositoryCard}:hover & {
-    color: #3498db;
+    color: #a855f7;
   }
 
   @media (max-width: 480px) {
@@ -126,7 +130,7 @@ const RepositoryName = styled.strong`
 const RepositoryDescription = styled.div`
   font-size: clamp(0.85rem, 2vw, 0.9rem);
   line-height: 1.6;
-  color: #34495e;
+  color: #a0a0b8;
   margin-bottom: 1.5rem;
   flex: 1;
   min-height: 60px;
@@ -146,7 +150,7 @@ const RepositoryMeta = styled.div`
   align-items: center;
   margin-bottom: 1rem;
   font-size: clamp(0.7rem, 1.5vw, 0.8rem);
-  color: #7f8c8d;
+  color: #6b6b80;
   gap: 0.5rem;
   flex-wrap: wrap;
 
@@ -158,7 +162,7 @@ const RepositoryMeta = styled.div`
 `
 
 const RepositoryDate = styled.span`
-  color: #95a5a6;
+  color: #6b6b80;
   font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   white-space: nowrap;
 
@@ -173,7 +177,7 @@ const RepositoryStar = styled.span`
   align-items: center;
   gap: 0.4rem;
   font-weight: 700;
-  color: #3498db;
+  color: #a855f7;
   font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   white-space: nowrap;
 

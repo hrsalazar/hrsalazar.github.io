@@ -15,9 +15,10 @@ import Repositories from '../components/repositories'
 
 const Separator = styled.div`
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #667eea 30%, #764ba2 50%, #667eea 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, #6366f1 30%, #a855f7 50%, #6366f1 70%, transparent 100%);
   margin: 5rem 0;
   position: relative;
+  opacity: 0.4;
 
   &::before {
     content: '';
@@ -27,9 +28,9 @@ const Separator = styled.div`
     transform: translate(-50%, -50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
     border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.4);
   }
 `
 
@@ -53,18 +54,18 @@ const AvatarSection = styled.div`
 `
 
 const AvatarImage = styled.img`
-  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.25);
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2), 0 0 60px rgba(99, 102, 241, 0.08);
   max-width: 200px;
   width: 100%;
   border-radius: 50%;
   margin: 0 auto 2rem;
-  border: 6px solid rgba(255, 255, 255, 0.9);
+  border: 3px solid rgba(99, 102, 241, 0.3);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &:hover {
     transform: scale(1.08) rotateZ(2deg);
-    box-shadow: 0 16px 50px rgba(102, 126, 234, 0.35);
-    border-color: #667eea;
+    box-shadow: 0 16px 50px rgba(99, 102, 241, 0.35), 0 0 80px rgba(168, 85, 247, 0.15);
+    border-color: #6366f1;
   }
 `
 
@@ -79,22 +80,22 @@ const SocialLinks = styled.div`
 
 const SocialLink = styled.a`
   padding: 12px;
-  color: #667eea;
+  color: #a0a0ff;
   border-radius: 50%;
-  background: rgba(102, 126, 234, 0.08);
+  background: rgba(99, 102, 241, 0.08);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.2);
   width: 56px;
   height: 56px;
 
   &:hover {
     color: white;
     transform: translateY(-4px) scale(1.1);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
     border-color: transparent;
   }
 
@@ -103,7 +104,7 @@ const SocialLink = styled.a`
   }
 
   &.github:hover {
-    background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   }
 
   &.linkedin:hover {
@@ -111,7 +112,7 @@ const SocialLink = styled.a`
   }
 
   &.email:hover {
-    background: linear-gradient(135deg, #c23a2b 0%, #a02920 100%);
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
   }
 `
 

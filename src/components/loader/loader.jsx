@@ -25,10 +25,10 @@ export default styled(Loader)`
     width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid #25303B;
+    border: 6px solid #6366f1;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #25303B transparent transparent transparent;
+    border-color: #6366f1 transparent transparent transparent;
   }
   div:nth-child(1) {
     animation-delay: -0.45s;
